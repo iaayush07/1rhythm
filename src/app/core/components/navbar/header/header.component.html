@@ -1,0 +1,129 @@
+<!-- header -->
+<nav class="navbar  bg-white shadow-sm  ">
+    <div class="container">
+        <div class="d-flex flex-wrap justify-content-between align-items-center w-100">
+            <!-- brand logo -->
+            <a href="" class="d-flex align-items-center logo-wrapper">
+                <img src="../../../../../assets/images/1rhythmlogo.png" alt="" class="img">
+                <span class="fs-4 logo-text text-dark ms-2 mb-0  ">1Rhythm</span>
+            </a>
+            <!-- menu-icon for responsive -->
+            <label for="headerInput" class="d-block d-md-none ">
+                <img src="../../../../assets/images/menu.svg" width="20px" alt="">
+            </label>
+            <input type="checkbox" class="d-none" id="headerInput">
+            <div class="flex-grow-1 justify-content-between align-items-md-center" id="toggleHeader">
+                <!-- nav-list -->
+                <div class="d-flex  mx-md-auto mx-0  ">
+                    <ul class="nav  flex-md-row flex-column nav-list-item">
+                        <!-- nav-item home-->
+                        <li class="nav-item">
+                            <!-- nav-link home-->
+                            <!-- --active tabs with routerLinkActive -- @author: Ayush Dhimmar---- -->
+                            <a class="nav-link d-flex align-items-center " routerLink="home"
+                                routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+                                <!-- nav-icon-home-->
+                                <span class="icon-home me-2 header-icon "></span>
+                                <!-- nav-text-home -->
+                                <span class="nav-text ">Home</span>
+                            </a>
+                        </li>
+                        <!-- nav-item studio-->
+                        <li class="nav-item ">
+                            <!-- nav-link -->
+                            <a class="nav-link d-flex align-items-center " *ngIf="showStudio"
+                                routerLink="studio/studio-list" routerLinkActive="active-link"
+                                [routerLinkActiveOptions]="{exact: true}">
+                                <!-- nav-icon-studio-->
+                                <span class="icon-studios me-2 header-icon "></span>
+                                <!-- nav-text-studio -->
+                                <span class="nav-text">Studios</span>
+                            </a>
+                        </li>
+                        <!-- nav-item artists-->
+                        <li class="nav-item ">
+                            <!-- nav-link -->
+                            <a class="nav-link d-flex align-items-center " *ngIf="showArtist"
+                                routerLink="artist/artist-list" routerLinkActive="active-link"
+                                [routerLinkActiveOptions]="{exact:true}">
+                                <!-- nav-icon-artists-->
+                                <span class="icon-artists me-2 header-icon "></span>
+                                <!-- nav-text-artists -->
+                                <span class="nav-text">Artists</span>
+                            </a>
+                        </li>
+                        <!-- nav-item booking history-->
+                        <li class="nav-item ">
+                            <!-- nav-link -->
+                            <a class="nav-link d-flex align-items-center " routerLink="booking-history"
+                                routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}">
+                                <!-- nav-icon-booking history-->
+                                <span class="icon-Booking-history me-2 header-icon "></span>
+                                <!-- nav-text-booking history -->
+                                <span class="nav-text">Booking History</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- profile -->
+                <div class=" d-flex align-items-start">
+                    <!-- searchbar -->
+                    <div class="form-group has-search position-relative me-4 d-none">
+                        <input type="text" placeholder="Search" class="ms-3 search-input">
+                        <span class=" "></span>
+                    </div>
+
+                    <div ngbDropdown display="dynamic" placement="bottom-end" id="manageProfileDropdown"
+                        ngbDropdownToggle class=" profile-wrapper-image d-flex align-items-center drop">
+                        <!-- profile-image -->
+
+                        <div class="rounded-circle image overflow-hidden ">
+                            <!-- @author: Nikunj Patel -->
+                            <!-- to show the profile picture of user -->
+                            <img src="{{ userData.image}}" class=" img-fluid profile-image " alt=""
+                                *ngIf="userData?.image">
+
+                            <!-- if can't get the image from the database then display this picture as a profile picture -->
+                            <img src="../../../../../assets/images/profile.png" class=" img-fluid profile-image " alt=""
+                                *ngIf="!userData?.image">
+                        </div>
+                        <p class="mb-0 ms-2 me-1 ">
+                            <!-- to show the full Name of User -->
+                            <!-- @author : Nikunj Patel -->
+                            {{userName}}
+                        </p>
+
+                        <div class="border-0 shadow-sm dropdown-wrapper" ngbDropdownMenu
+                            aria-labelledby="manageProfileDropdown">
+                            <!-- dropdown-menu -->
+
+                            <li class="item px-3 py-1 d-none">
+                                <div class="form-switch p-0 d-flex align-items-center justify-content-between">
+                                    <label class="form-check-label cursor-pointer"
+                                        for="flexSwitchCheckDefault">Available</label>
+                                    <input class="form-check-input m-0 " type="checkbox" role="switch"
+                                        id="flexSwitchCheckDefault">
+                                </div>
+                            </li>
+                            <li class="item px-3 py-1" routerLink="manage-profile">
+                                Manage Profile
+                            </li>
+
+                            <li class="item px-3 py-1" *ngIf="showArtist"
+                                [ngClass]="roleType=='General User'? 'd-none':'d-block'"
+                                routerLink="studio/manage-studio-profile">
+                                Manage Studio Profile
+                            </li>
+                            <li class="item px-3 py-1" *ngIf="showStudio"
+                                [ngClass]="roleType =='General User'? 'd-none':'d-block'"
+                                routerLink="artist/manage-artist-profile">Manage Artist Profile</li>
+                            <li class="item px-3 py-1" routerLink="login" (click)="onLogout()">Log Out</li>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</nav>

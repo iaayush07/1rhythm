@@ -1,0 +1,27 @@
+.card {
+    box-shadow: $card-box-shadow;
+    .image-wrapper {
+        height: $card-img-height;
+        object-fit: cover;
+    }
+    // Display only two lines of text
+    .truncate-overflow {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        width: 100%;
+        overflow: hidden;
+    }
+    .card-text {
+        height: $card-description-height;
+    }
+    .btn:hover {
+        color: $white;
+    }
+}
+.card:hover{
+    box-shadow:$card-box-shadow-hover;
+}
+    
+   

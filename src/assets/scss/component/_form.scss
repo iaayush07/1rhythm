@@ -1,0 +1,335 @@
+// // start:registertion form
+// .background-image {
+//   background: url("../../../assets/images/Bg\ Image.png") center no-repeat;
+//   background-size: cover;
+//   height: 100%;
+// }
+
+// // Upload Profile
+// .profile-wrapper {
+//   height: 90px;
+//   width: 90px;
+
+//   input {
+//     display: none;
+//   }
+
+//   .profile {
+//     background: url("../../../assets/images/profile-icon.png") center no-repeat;
+//     background-size: 100%;
+//     width: inherit;
+//     height: inherit;
+
+//     img {
+//       width: 100%;
+//       height: 100%;
+//       object-fit: cover;
+//     }
+//   }
+// }
+
+// // password show hide icon
+// .password-toggle {
+//   right: 10px;
+//   top: 50%;
+//   transform: translateY(-50%);
+//   cursor: pointer;
+// }
+
+// .registerForm {
+
+//   .form-label,
+//   .note {
+//     font-size: $font-size-base;
+//   }
+
+//   .country-label {
+//     padding: 0;
+//   }
+
+//   font-size: $fs-7;
+
+//   .form-control:focus {
+//     border: 1px solid $primary;
+//     box-shadow: none;
+//   }
+
+//   .form-select {
+//     font-size: 0.9rem;
+
+//     &:focus {
+//       box-shadow: none;
+//     }
+//   }
+
+//   ::placeholder {
+//     color: $gray;
+//   }
+
+//   .invalid-border {
+//     border: 1px solid $danger;
+//   }
+// }
+
+
+// // Media Query
+// @media (max-width: 550px) {
+//   .container {
+//     padding: 16px;
+//   }
+
+//   .registartion-form-container {
+//     height: 600px;
+//     overflow: auto;
+//     margin: 0 20px;
+//   }
+
+//   .logo {
+//     text-align: center;
+//     margin-bottom: 30px;
+
+//     img {
+//       width: 320px;
+//     }
+//   }
+// }
+
+// @media (max-width: 990px) {
+//   .container {
+//     padding: 16px;
+//   }
+
+//   .registartion-form-container {
+//     overflow: auto;
+//     margin: 0 20px;
+//     height: 650px;
+//   }
+
+//   .logo {
+//     text-align: center;
+//     margin-bottom: 30px;
+
+//     img {
+//       width: 350px;
+//     }
+//   }
+// }
+
+// @media (max-height: 750px) {
+//   section {
+//     overflow: auto;
+
+//     .registartion-form-container {
+//       overflow: auto;
+//       margin: 0 20px;
+//       height: 450px;
+//     }
+//   }
+
+//   .logo {
+//     text-align: center;
+
+//     img {
+//       width: 220px;
+//     }
+//   }
+// }
+
+// // login-form-container styles
+// .form-container {
+//   max-width: 470px;
+//   width: 100%;
+//   padding: 60px;
+//   border-radius: $form-border-radius;
+
+//   @include media-breakpoint-down(sm) {
+//     max-width: 470px;
+//     width: 80%;
+//     padding: 30px;
+//     border-radius: $form-border-radius;
+//   }
+
+//   //input outline color when focus on
+//   .form-control:focus {
+//     box-shadow: none;
+//   }
+
+//   .welcome-text {
+//     font-size: $font-size-sm;
+//   }
+
+//   .error-fsize {
+//     font-size: 14px;
+//   }
+// }
+
+
+// start:registertion form
+.background-image {
+  background: url("../../../assets/images/Bg\ Image.png") center no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+.registartion-form {
+  padding-right: 200px;
+  padding-left: 200px;
+}
+
+// Upload Profile
+.profile-wrapper {
+  height: 90px;
+  width: 90px;
+
+  input {
+    display: none;
+  }
+
+  .profile {
+    background: url("../../../assets/images/profile-icon.png") center no-repeat;
+    background-size: 100%;
+    width: inherit;
+    height: inherit;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+// password show hide icon
+.password-toggle {
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.registerForm {
+
+  .form-label,
+  .note {
+    font-size: $font-size-base;
+  }
+
+  .country-label {
+    padding: 0;
+  }
+
+  font-size: $fs-7;
+
+  .form-control:focus {
+    border: 1px solid $primary;
+    box-shadow: none;
+  }
+
+  .form-select {
+    font-size: 0.9rem;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  ::placeholder {
+    color: $gray;
+  }
+
+  .invalid-border {
+    border: 1px solid $danger;
+  }
+}
+
+
+// Media Query
+@media (max-width: 550px) {
+  .registartion-form {
+    padding: 16px;
+  }
+
+  .registartion-form-container {
+    height: 600px;
+    overflow: auto;
+    margin: 0 20px;
+  }
+
+  .logo {
+    text-align: center;
+    margin-bottom: 30px;
+
+    img {
+      width: 320px;
+    }
+  }
+}
+
+@media (max-width: 990px) {
+  .registartion-form {
+    padding: 16px;
+  }
+
+  .registartion-form-container {
+    overflow: auto;
+    margin: 0 20px;
+    height: 650px;
+  }
+
+  .logo {
+    text-align: center;
+    margin-bottom: 30px;
+
+    img {
+      width: 350px;
+    }
+  }
+}
+
+@media (max-height: 750px) {
+  section {
+    overflow: auto;
+
+    .registartion-form-container {
+      overflow: auto;
+      margin: 0 20px;
+      height: 450px;
+    }
+  }
+
+  .logo {
+    text-align: center;
+
+    img {
+      width: 220px;
+    }
+  }
+}
+
+// login-form-container styles
+.form-container {
+  max-width: 470px;
+  width: 100%;
+  padding: 60px;
+  border-radius: $form-border-radius;
+
+  @include media-breakpoint-down(sm) {
+    max-width: 470px;
+    width: 80%;
+    padding: 30px;
+    border-radius: $form-border-radius;
+  }
+
+  //input outline color when focus on
+  .form-control:focus {
+    box-shadow: none;
+  }
+
+  .welcome-text {
+    font-size: $font-size-sm;
+  }
+
+  .error-fsize {
+    font-size: 14px;
+  }
+}

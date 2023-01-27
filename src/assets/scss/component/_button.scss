@@ -1,0 +1,27 @@
+.password-icon-wrapper {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 0;
+  font-size: 16px;
+}
+
+.button-primary {
+  padding: 8px 50px;
+  background: $gradient;
+  // background: $gradient;
+  @include media-breakpoint-down(sm) {
+    padding: 7px 20px;
+  }
+}
+//button
+.button-secondry {
+  padding: 8px 50px;
+  background: $white;
+  border: 1px solid $secondary;
+  color: $secondary;
+  // background: $gradient;
+  @include media-breakpoint-down(sm) {
+    padding: 7px 20px;
+  }
+}

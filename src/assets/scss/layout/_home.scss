@@ -1,0 +1,38 @@
+// Styles for card wrapper(Explore artist/Expolre Studio)
+.card-title-wrapper {
+    background: $card-wrapper-background;
+
+    .explore-text {
+        font-weight: $font-weight-medium;
+        font-size: $larg-font-size;
+    }
+
+    .see-all-text {
+        font-weight: $font-weight-semibold;
+        cursor: pointer;
+        text-decoration: none;
+    }
+}
+
+/* responsive */
+
+@include media-breakpoint-down(lg) {
+
+    // change of carousel size for smaller screen
+    .carousel-wrapper {
+        .carousel-text-wrapper {
+            height: 100%;
+            width: 80%;
+        }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+
+    // Smaller font size for small screen
+    .card-title-wrapper {
+        .explore-text {
+            font-size: $smaller-font-size;
+        }
+    }
+}

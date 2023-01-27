@@ -1,0 +1,28 @@
+<!-- Comman card to display data of studio as well artist -->
+<div class="card p-3">
+    <div class="image-wrapper rounded overflow-hidden d-flex align-items-center justify-content-center mb-2">
+        <!-- Displaying dynamic cover image -->
+        <!--  @author : Ayush Dhimmar -->
+        <img src="{{'data:image/jpg;base64,' + data?.image?.artistImage}}" alt="No Image Found" class="h-100 w-100"
+            *ngIf="data.typeId == 2">
+        <img src="{{'data:image/jpg;base64,' + data?.image?.studioImage}}" alt="No Image Found" class="h-100 w-100"
+            *ngIf="data.typeId == 1">
+    </div>
+    <div class="card-body p-0">
+        <!-- Artist/Studio name -->
+        <h5 class="mb-1">{{data?.name}}</h5>
+        <!-- Artist description/Studio address -->
+        <!--  @author : Ayush Dhimmar -->
+        <p class="card-text mb-2 truncate-overflow" *ngIf="data.typeId == 1">
+            {{data?.description}}</p>
+        <div class="card-text mb-2 truncate-overflow" *ngIf="data.typeId == 2">
+            <span *ngFor="let artists of data.description; let last=last">{{artists?.artistType | titlecase}}
+                <ng-container *ngIf="!last">, </ng-container>
+            </span>
+        </div>
+        <!-- Button for view details of artist/studio -->
+        <a class="btn btn-outline-secondary text-nowrap d-flex align-items-center justify-content-center"
+            (click)="onViewDescription(data.id,data.typeId)">View
+            Details</a>
+    </div>
+</div>

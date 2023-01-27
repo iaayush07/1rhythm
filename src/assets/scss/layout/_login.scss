@@ -1,0 +1,17 @@
+// main container for login page 
+.login-container {
+    height: 100%;
+    background-image: url("../../images/background.png");
+    font-family: $font-family-sans-serif;
+    color: $dark;
+
+    // media queries for logo 
+    .brand-logo {
+        max-width: $brand-logo-width;
+        width: 100%;
+
+        @include media-breakpoint-down(md) {
+            max-width: 320px;
+        }
+    }
+}

@@ -1,0 +1,73 @@
+<!--start: main-wrapper-->
+<div class="login-container">
+  <!--start: row-->
+  <div class="row h-100 flex-column flex-lg-row align-items-center justify-content-center">
+    <!--start: 1Rhythm-logo-->
+    <figure class="col-lg-6 col-12 brand-logo mb-4 mb-lg-0 mx-auto">
+      <img src="../../../assets/images/1Rhythm_logo.png" class="img-fluid" alt="1Rhythm" />
+    </figure>
+    <!--end: 1Rhythm-logo-->
+    <!--start: form-container-->
+    <div class="col-lg-6 col-12">
+      <!--start: login-form-->
+      <form [formGroup]="loginForm" (ngSubmit)="onSignIn()" class="form-container mx-auto mx-lg-0 bg-white">
+        <div class="d-flex flex-column mb-5">
+          <span class="welcome-text fw-bolder text-uppercase mb-3">welcome</span>
+          <h3 class="fw-bold mb-3">Login to Your Account</h3>
+          <h6 class="fw-normal">
+            Create an Account?
+            <a class="text-primary fw-bold text-decoration-none" routerLink="/registration">Sign Up</a>
+          </h6>
+        </div>
+        <!--start: email -->
+        <div class="mb-4">
+          <label class="form-label fw-semibold mb-1 d-flex align-items-start">Email ID<span
+              class="text-danger">*</span></label>
+          <input type="email" maxlength="50" class="form-control" formControlName="email"
+            [ngClass]="{'is-invalid': loginForm.controls['email'].invalid &&  (isSubmitted || loginForm.controls['email'].touched),'is-valid': loginForm.controls['email'].valid && (isSubmitted || loginForm.controls['email'].dirty || loginForm.controls['email'].touched)}" />
+          <div
+            *ngIf="loginForm.controls['email'].invalid && (isSubmitted || loginForm.controls['email'].dirty || loginForm.controls['email'].touched)">
+            <span class="error-fsize d-flex align-items-start text-danger"
+              *ngIf="loginForm.controls['email'].errors?.['required']">This field is required</span>
+            <span
+              *ngIf="loginForm.controls['email'].errors?.['pattern'] && (isSubmitted || loginForm.controls['email'].pristine|| loginForm.controls['email'].touched)"
+              class="text-danger error-fsize">
+              User does not exist</span>
+          </div>
+        </div>
+        <!--end: email -->
+        <!--start: Password -->
+        <div class="mb-5">
+          <label class="form-label fw-semibold mb-1 d-flex align-items-start">Password<span
+              class="text-danger">*</span></label>
+          <div class="position-relative">
+            <input [type]="password" class="form-control" formControlName="password"
+              [ngClass]="{'is-invalid': loginForm.controls['password'].invalid && (isSubmitted || loginForm.controls['password'].touched), 'is-valid': loginForm.controls['password'].valid && (isSubmitted || loginForm.controls['password'].dirty || loginForm.controls['password'].touched)}" />
+            <button type="button" class="btn password-icon-wrapper" (click)="onClick()">
+              <span class="icon-eye-fill" *ngIf="!show"></span>
+              <span class="icon-eye-slash-fill" *ngIf="show"></span>
+            </button>
+          </div>
+          <div
+            *ngIf="loginForm.controls['password'].invalid && (isSubmitted || loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+            <span class="error-fsize d-flex align-items-start text-danger"
+              *ngIf="loginForm.controls['password'].errors?.['required']">This field is required</span>
+            <span *ngIf="loginForm.controls['password'].errors?.['pattern'] && (loginForm.controls['password'].touched ||
+                            loginForm.controls['password'].pristine)" class="text-danger error-fsize">
+              Please enter valid password </span>
+          </div>
+        </div>
+        <!--end: Password -->
+        <!--start: sign-in button -->
+        <button type="submit" title="Sign In" class="btn btn-sign-in button-primary  border-0">
+          <span class="w-100 text-white">Sign In</span>
+        </button>
+        <!--end: sign-in button -->
+      </form>
+      <!--end: login-form-->
+    </div>
+    <!--end: form-container-->
+  </div>
+  <!--end: row-->
+</div>
+<!--end: main-wrapper-->

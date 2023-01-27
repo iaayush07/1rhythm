@@ -1,0 +1,229 @@
+<!-- Manage Artist page main container -->
+<div class="container-fluid h-100 overflow-auto border p-5">
+  <!-- Manage Artist page heading  -->
+  <div>
+    <h3 class="fw-bold">Manage Artist Profile</h3>
+  </div>
+  <!-- manage form -->
+  <form [formGroup]="artistProfileForm" (ngSubmit)="submitDetails()">
+    <div class="row g-0 my-3">
+      <!-- upload and manage images  -->
+      <div class="col-12  col-lg-5 col-xxl-4 pe-lg-3">
+        <div class="uploadImage_wrapper border border-grey p-4 rounded-3">
+          <!-- heading  -->
+          <div>
+            <h5 class="fw-bold">Add Artist Images</h5>
+          </div>
+          <!-- drag and drop box  -->
+          <div class="mt-4">
+            <div class="custom-dropzone" ngx-dropzone accept="image/jpeg,image/jpg,image/png,image/gif"
+              (change)="onSelect($event)">
+              <ngx-dropzone-label for="uploadimage">
+                <div class="d-flex flex-column align-items-center">
+                  <img class="mb-4 upload-image-icon" src="../../../assets/images/uploadImageIcon.png" alt="">
+                  <span class="text-gray">
+                    <span class="text-primary" for="uploadimage">Upload Image</span>
+                    Or Just Drag And Drop</span>
+                  <span class="fs-7 text-gray">+ Add 5 Images</span>
+                </div>
+              </ngx-dropzone-label>
+            </div>
+          </div>
+          <!-- image preview container  -->
+          <div class="row g-3 pt-5 image_wrapper">
+            <div class="col-4 my-2" *ngFor="let image of images let index=index">
+              <div class="img_preview position-relative">
+                <input type="radio" name="coverImages" value="" id="coverImage{{index}}">
+                <div class="cover-image rounded-3 overflow-hidden">
+                  <div class="cover-overlay">
+                    <label for="coverImage{{index}}" class="svg-heart text-white fs-1 mx-1"
+                      (click)="setFavImage(index)"><img src="../../../assets/images/heart-icon.svg"
+                        *ngIf="!(image.isLike)" alt="">
+                      <!-- [ngClass]="{'icon-heart':!(image.isLike)}" -->
+                    </label>
+                    <span class="icon text-danger">
+                      <!-- [ngClass]="{'icon-heart-fill':image.isLike}" -->
+                      <img src="../../../assets/images/filled_heart.png" *ngIf="image.isLike" alt="">
+                    </span>
+                    <span class="icon text-white fs-1 mx-1" (click)="onRemove(index)">
+                      <!-- [ngClass]="{'icon-delete':!(image.isLike)}" -->
+                      <img src="../../../assets/images/trash_icon.png" *ngIf="!(image.isLike)" alt="">
+                    </span>
+                  </div>
+                  <img class="w-100 h-100" src="{{image.artistImage}}" class="img-fluid" alt="image">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Right side -->
+      <div class="col-12  col-lg-7 col-xxl-8  mt-4 mt-lg-0  ps-lg-3">
+        <div class="right-side-section border border-gray p-4 rounded-3">
+          <!-- Artist Details heading -->
+          <h5 class="fw-bold">Artist Details</h5>
+          <div class="row mt-4 mb-3">
+            <!-- Start Artist Name-->
+            <div class="col-12 col-lg-6  mb-3 mb-lg-0">
+              <div class="form-outline">
+                <label class="form-label fw-semibold" for="ArtistName">Artist Name <span class="text-danger">
+                    *</span></label>
+                <input type="text" id="ArtistName" class="form-control " placeholder="Artist Name"
+                  formControlName="artistName"
+                  [ngClass]="{'invalid-border':validator['artistName'].invalid && (validator['artistName'].touched||isSubmitted)}">
+              </div>
+              <div
+                *ngIf="validator['artistName'].invalid && (isSubmitted || validator['artistName'].dirty || validator['artistName'].touched)">
+                <span class="text-danger fs-7" *ngIf="validator['artistName'].errors?.['required']">This field is
+                  required</span>
+                <span class="text-danger fs-7" *ngIf="validator['artistName'].errors?.['maxlength']">Artist name
+                  must be less
+                  than 30 characters</span>
+                <span class="text-danger fs-7" *ngIf="validator['artistName'].errors?.['pattern']">“Enter
+                  alphanumeric and @$!_&
+                  only</span>
+              </div>
+            </div>
+            <!-- End Artist Name  -->
+            <!-- Start Artist Type  -->
+            <div class=" col-12 col-lg-6">
+              <label class="form-label fw-semibold" for="artist-type">Artist Type<span class="text-danger"> *</span>
+              </label>
+              <ng-select [clearable]='false' placeholder="Artist Type" formControlName="artistTypeId" [multiple]="true"
+                [ngClass]="{'invalid-border':validator['artistTypeId'].invalid && (validator['artistTypeId'].touched||isSubmitted)}">
+                <ng-option value="" disabled>Artist Type</ng-option>
+                <ng-option *ngFor="let artisttype of artisttypeList" value="{{artisttype.artistTypeId}}">
+                  {{artisttype.artistType}}
+                </ng-option>
+              </ng-select>
+              <div
+                *ngIf="validator['artistTypeId'].invalid && (isSubmitted || validator['artistTypeId'].dirty || validator['artistTypeId'].touched)">
+                <span class="text-danger fs-7" *ngIf="validator['artistTypeId'].errors?.['required']">This field is
+                  required</span>
+              </div>
+            </div>
+            <!-- End  Artist Type -->
+          </div>
+          <div class="row ">
+            <!-- Start Artist Decription -->
+            <div class="col-12 col-lg-6">
+              <label for="ArtistDecription" class="form-label fw-semibold">Artist Decription<span class="text-danger">
+                  *</span></label>
+              <textarea class="form-control" id="ArtistDecription" rows="1" placeholder="Artist Decription"
+                formControlName="artistDescription"
+                [ngClass]="{'invalid-border':validator['artistDescription'].invalid && (validator['artistDescription'].touched||isSubmitted)}"></textarea>
+              <div
+                *ngIf="validator['artistDescription'].invalid && (isSubmitted || validator['artistDescription'].dirty || validator['artistDescription'].touched)">
+                <span class="text-danger  fs-7" *ngIf="validator['artistDescription'].errors?.['required']">This
+                  field is
+                  required</span>
+                <span class="text-danger fs-7" *ngIf="validator['artistDescription'].errors?.['maxlength']">Artist name
+                  must be less
+                  than 250 characters</span>
+              </div>
+            </div>
+            <!-- End Artist Decription -->
+            <!-- Start Perfomance Type -->
+            <div class="col-12 col-lg-6 mt-4 mt-lg-0">
+              <label class=" form-label fw-semibold" for="artist-type">Perfomance Type<span class="text-danger">
+                  *</span>
+              </label>
+              <ng-select [clearable]='false' placeholder="Perfomance Type" formControlName="performanceTypeId"
+                [ngClass]="{'invalid-border':validator['performanceTypeId'].invalid && (validator['performanceTypeId'].touched||isSubmitted)}">
+                <ng-option value="" disabled>Perfomance Type</ng-option>
+                <ng-option *ngFor="let performanceType of performanceTypeList"
+                  value="{{performanceType.performanceTypeId}}">
+                  {{performanceType.performanceType}}
+                </ng-option>
+              </ng-select>
+              <div
+                *ngIf="validator['performanceTypeId'].invalid && (isSubmitted || validator['performanceTypeId'].dirty || validator['performanceTypeId'].touched)">
+                <span class="text-danger  fs-7" *ngIf="validator['performanceTypeId'].errors?.['required']">This
+                  field is
+                  required</span>
+              </div>
+            </div>
+          </div>
+          <!-- End Perfomance Type -->
+          <div class="my-2">
+            <h5 class="border-bottom border-1 pb-3">Event Details</h5>
+          </div>
+          <div class="fw-semibold mt-4 my-2">Select Event Days <span class="text-danger"> *</span></div>
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <div class="row">
+                <!-- from -->
+                <div class="col-12 col-lg-6">
+                  <div class="mb-4">
+                    <label class="form-label fw-semibold" for="country">From
+                    </label>
+                    <ng-select [clearable]='false' placeholder="From" formControlName="toDay"
+                      [ngClass]="{'invalid-border':validator['toDay'].invalid && (validator['toDay'].touched||isSubmitted)}"
+                      (change)="onweekDays1($event)">
+                      <ng-option value="" disabled>From</ng-option>
+                      <ng-option *ngFor="let weekday1 of days" [value]="weekday1.id">
+                        {{weekday1.day}}
+                      </ng-option>
+                    </ng-select>
+                    <div
+                      *ngIf="validator['toDay'].invalid && (isSubmitted || validator['toDay'].dirty || validator['toDay'].touched)">
+                      <span class="text-danger  fs-7" *ngIf="validator['toDay'].errors?.['required']">This
+                        field is
+                        required</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- to -->
+                <div class="col-12 col-lg-6">
+                  <label class="form-label fw-semibold" for="country">To
+                  </label>
+                  <ng-select [clearable]='false' placeholder="To" formControlName="fromDay"
+                    [ngClass]="{'invalid-border ':validator['fromDay'].invalid && (validator['fromDay'].touched||isSubmitted)}">
+                    <ng-option value="" disabled>To</ng-option>
+                    <ng-option *ngFor="let weekday2 of days" [value]="weekday2.id"
+                      [disabled]="weekdays1Id == weekday2.id">
+                      {{weekday2.day}}
+                    </ng-option>
+                  </ng-select>
+                  <div
+                    *ngIf="validator['fromDay'].invalid && (isSubmitted || validator['fromDay'].dirty || validator['fromDay'].touched)">
+                    <span class="text-danger  fs-7" *ngIf="validator['fromDay'].errors?.['required']">This
+                      field is
+                      required</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6  mt-4 mt-lg-0">
+              <div class="form-outline">
+                <label class="form-label fw-semibold" for="ArtistName">Event Rate <span class="text-danger">
+                    *</span></label>
+                <input type="text" id="ArtistName" class="form-control " placeholder="Event Rate"
+                  formControlName="eventRate"
+                  [ngClass]="{'invalid-border':validator['eventRate'].invalid && (validator['eventRate'].touched||isSubmitted)}">
+              </div>
+              <div
+                *ngIf="validator['eventRate'].invalid && (isSubmitted || validator['eventRate'].dirty || validator['eventRate'].touched)">
+                <span class="text-danger  fs-7" *ngIf="validator['eventRate'].errors?.['required']">This field is
+                  required</span>
+                <span class="text-danger  fs-7" *ngIf="validator['eventRate'].errors?.['pattern']">Enter numbers
+                  only</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-lg-12">
+              <div class="d-flex justify-content-center justify-content-md-end my-4">
+                <button type="button" class=" button-secondry  rounded me-4" routerLink="/home">Cancel</button>
+                <button type="submit" class="btn button-primary text-white rounded fw-medium  border-0">Save</button>
+
+                <!-- Select Artist Services  -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Select Artist Services  -->
+      </div>
+    </div>
+  </form>
+</div>

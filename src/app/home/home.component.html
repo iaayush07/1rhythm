@@ -1,0 +1,83 @@
+<!-- Main section of home starts here -->
+<!-- Angular of Carousel Data : @author : Nikunj Patel-->
+<section class="bg-white pb-4">
+    <div class="container">
+        <div class="row gx-0">
+            <!-- Carousel starts here -->
+            <ngb-carousel class="col carousel-wrapper overflow-hidden" [showNavigationArrows]="false" [interval]="7000">
+                <!-- Displaying dynamic data using iteration -->
+                <ng-template ngbSlide *ngFor="let data of carouselData">
+                    <!-- Adding background image of caousel -->
+                    <div class="picsum-img-wrapper position-relative">
+                        <img src="{{'data:image/jpg;base64,' + data?.image?.artistImage}}" class="h-100 w-100"
+                            *ngIf="data.typeId == 2" alt="No Image Found">
+                        <img src="{{'data:image/jpg;base64,' + data?.image?.studioImage}}" class="h-100 w-100"
+                            *ngIf="data.typeId == 1" alt="No Image Found">
+                    </div>
+                    <!-- Text to display on carousel -->
+                    <div class="carousel-text-wrapper position-absolute top-0 h-100">
+                        <div class="carousel-text text-white">
+                            <h5>RECENTLY ADDED</h5>
+                            <!-- Name of artist or studio -->
+                            <span class="text-white role-title fw-bold"> {{data?.name + " "}}</span> &nbsp;<span
+                                class="role-name fw-bold px-1">{{data?.role}}</span>
+                            <h4 class="truncate-overflow description" *ngIf="data.typeId == 1">{{data?.description}}
+                            </h4>
+                            <h4 class="card-text mb-2 truncate-overflow" *ngIf="data.typeId == 2">
+                                <span *ngFor="let artists of data.description; let last=last">{{artists?.artistType |
+                                    titlecase}}
+                                    <ng-container *ngIf="!last">, </ng-container>
+                                </span>
+                            </h4>
+                            <!-- Button to view more details of artist or studio -->
+                            <div class="d-none">
+                                <a class="btn btn-primary py-2 px-4 my-4">View
+                                    Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </ngb-carousel>
+            <!-- End of carousel -->
+        </div>
+    </div>
+</section>
+
+<!-- Explore studio starts here-->
+<!-- Angular of Studio Data : @author : Charvi Sarang-->
+<section class="card-title-wrapper pt-4 " [ngClass]="roleType == 'Studio Owner' ? 'd-none' : 'd-block'">
+    <div class="container">
+        <div class=" d-flex justify-content-between align-items-center pb-4">
+            <span class="explore-text text-nowrap">Explore Studios</span>
+            <a class="see-all-text text-primary text-nowrap fs-6" (click)="onStudioList()">SEE ALL</a>
+        </div>
+        <div class="row justify-content-between">
+            <!-- Displaying studio data on cards dynamically for different size of screens -->
+            <div class="col-xxl-2 col-md-4 col-sm-6 col-xs-12 pb-4" *ngFor="let studio of studioRecentSixData">
+                <app-card [data]="studio"></app-card>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End of explore studio section -->
+
+<!-- Explore artist starts here -->
+<!-- Angular of Artist Data : @author : Ayush Dhimmar-->
+<section class="card-title-wrapper pt-4" [ngClass]="roleType == 'Artist' ? 'd-none' : 'd-block'">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center pb-4">
+            <span class="explore-text text-nowrap">Explore Artists</span>
+            <a class="see-all-text text-primary text-nowrap fs-6" (click)="onArtistList()">SEE ALL</a>
+        </div>
+
+        <div class="row justify-content-between">
+            <!-- Displaying artist data on cards dynamically for different size of screens -->
+            <div class="col-xxl-2 col-md-4 col-sm-6 col-xs-12 cards pb-4"
+                *ngFor="let artist of artistRecentSixData; let i = index;">
+                <app-card [data]="artist"></app-card>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End of explore artist section -->
+<!-- End of main section -->

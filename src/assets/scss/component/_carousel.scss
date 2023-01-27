@@ -1,0 +1,107 @@
+// Style of carousel
+.carousel-wrapper {
+    border-radius: $carousel-border-radius;
+
+    .picsum-img-wrapper {
+        height: $carousel-img-height;
+
+        img {
+            object-fit: cover;
+        }
+    }
+}
+
+// Style for text displayed on carousel
+.carousel-text-wrapper {
+    background: $carousel-background;
+    border-radius: $carousel-border-radius;
+    width: $carousel-content-width;
+
+    .carousel-text {
+        margin: $carousel-wrapper-margin;
+
+        // Style for artist/studio name
+        .role-title {
+            font-size: $carousel-font-size;
+        }
+
+        // Display only two lines of text
+        .truncate-overflow {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        // Style for artist/studio type text 
+        .role-name {
+            font-size: $carousel-font-size;
+            background: -webkit-linear-gradient(right, #2D6DD5, #35B5C8);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-stroke: 2.4px transparent;
+            color: $dark;
+        }
+    }
+}
+
+@include media-breakpoint-down(md) {
+
+    // Change carousel height for smaller screen
+    .carousel-wrapper {
+        .picsum-img-wrapper {
+            height: $carousel-img-height-md;
+        }
+    }
+
+    .carousel-text-wrapper {
+        height: 100%;
+        width: 90%;
+
+        .carousel-text {
+
+            // Display only one line of text
+            .truncate-overflow {
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                text-overflow: ellipsis;
+                -webkit-box-orient: vertical;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            // Change carousel text size for smaller screen
+            .role-title,
+            .role-name {
+                font-size: $smaller-font-size;
+                font-weight: $font-weight-normal;
+            }
+        }
+    }
+}
+
+
+
+@include media-breakpoint-down(sm) {
+
+    // Change carousel text size for smaller screen
+    .carousel-wrapper {
+        .carousel-text-wrapper {
+            height: 100%;
+            width: 90%;
+
+            .role-title,
+            .role-name {
+                font-size: $carousel-font-size-sm;
+            }
+
+            // hide description
+            .description {
+                display: none;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,96 @@
+//fonts variables
+$font-family-sans-serif: "Roboto", sans-serif;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-bolder: 800;
+
+
+//Font-Size variables
+$font-size-base: 1rem;
+$fs-7: 0.75rem;
+//color variables
+$primary: #2C61D7;
+$secondary: #35B6C8;
+$dark: #0D0F14;
+$danger: #F03E3E;
+$gray: #ADB5BD;
+$gradient: linear-gradient(270.17deg, #2D6DD5 1.37%, #35B5C8 99.86%);
+$opacity-primary: rgba(
+  $color: $primary,
+  $alpha: 0.4,
+);
+$carousel-background: linear-gradient(to right, $dark 60%, transparent);
+$card-box-shadow: 0px 0px 32px rgba(69, 69, 69, 0.12);
+$card-box-shadow-hover: 0px 0px 32px rgba(69, 69, 69, 0.28);
+$white: #fff;
+$card-wrapper-background: linear-gradient(180deg, #F9F7F7 0%, rgba(249, 247, 247, 0) 100%);
+
+//margin variables
+$heading-margin-bottom: 0;
+$paragraph-margin-bottom: 0;
+$form-label-margin-bottom: 0;
+
+//border variables
+$border-radius: 4px;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+  xxxl: 1800px
+);
+// navbar-link
+$link-decoration : none;
+
+
+
+// card-border
+$card-border-width: 0px;
+
+// variables used for carousel
+$carousel-border-radius: 14px;
+$carousel-img-height: 350px;
+$carousel-font-size: 36px;
+$carousel-wrapper-margin: 53px 0 0 53px;
+$carousel-content-width: 60%;
+$carousel-img-height-md: 250px;
+
+// variables used for card
+$card-img-height: 220px;
+$card-description-height: 48px;
+
+//font-size
+$larg-font-size: 34px;
+$smaller-font-size: 28px;
+$carousel-font-size-sm: 20px;
+$artist-event-font-size : 20px;
+$form-border-radius: $border-radius;
+$form-border-radius: 4px;
+$input-border-radius: 4px;
+$input-focus-border-color: $primary;
+
+// error icon
+$form-feedback-icon-invalid: none;
+$form-feedback-icon-valid: none;
+
+//spinner animation speed
+$spinner-animation-speed: 2s;
+// brand-logo
+$brand-logo-width: 360px;
+
+//backdrop color
+$backdrop-color: rgba(0, 0, 0, 0.5);
+$dashed-border: 2px dashed rgba(44, 97, 215, 0.6);
+
+// button
+$btn-padding-x: 55px;
+$btn-padding-y: 10px;
+
+// forms variable
+$form-select-disabled-bg: white;

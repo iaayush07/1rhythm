@@ -1,0 +1,149 @@
+//import google fonts
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap");
+
+// ng-Select
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+//global styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: $font-family-sans-serif;
+}
+
+label,
+a {
+  cursor: pointer;
+}
+
+// custom font size
+.fs-7 {
+  font-size: 12px;
+}
+
+.fs-8 {
+  font-size: 8px;
+}
+
+.fs-9 {
+  font-size: 4px;
+}
+
+// color
+.text-gray {
+  color: $gray;
+}
+
+// custom  scss
+.border-dashed {
+  border: $dashed-border;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.fw-medium {
+  font-weight: $font-weight-normal;
+}
+
+// Custom ScrollBar
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  padding: 2px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 2px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+// ng select dropdown
+.ng-select {
+  .ng-arrow-wrapper {
+    .ng-arrow {
+      border-color: $dark transparent transparent;
+      border-style: solid;
+      border-width: 5px 5px 2.5px;
+    }
+  }
+}
+
+.ng-select.ng-select-focused:not(.ng-select-opened) > .ng-select-container {
+  border: 1px solid $primary;
+  box-shadow: none;
+}
+
+.invalid-border.ng-select.ng-select-focused:not(.ng-select-opened)
+  > .ng-select-container {
+  border: 0;
+}
+
+.ng-select-country.ng-select {
+  .ng-select-container {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: 0;
+  }
+}
+
+.ng-select.ng-select-disabled > .ng-select-container {
+  background-color: white;
+}
+
+.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value {
+  font-size: 0.9rem;
+}
+
+.ng-select-country.ng-select {
+  .ng-arrow-wrapper {
+    .ng-arrow {
+      border-color: $gray transparent transparent;
+    }
+  }
+}
+
+.ng-select-country.ng-select .ng-select-container .ng-value-container {
+  padding-left: 2px;
+}
+
+.country-label {
+  height: 36px;
+}
+
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected,
+.ng-dropdown-panel
+  .ng-dropdown-panel-items
+  .ng-option.ng-option-selected.ng-option-marked {
+  display: none;
+}
+
+.ng-value.ng-value-disabled {
+  color: $gray;
+  font-size: $font-size-base;
+}
+
+.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value {
+  font-size: $font-size-base;
+}
